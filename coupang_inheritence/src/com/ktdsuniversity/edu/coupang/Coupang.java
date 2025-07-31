@@ -3,6 +3,8 @@ package com.ktdsuniversity.edu.coupang;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+import com.ktdsuniversity.edu.coupang.utils.ArrayUtil;
+
 public class Coupang {
 
 	private Scanner consoleInput;
@@ -14,28 +16,42 @@ public class Coupang {
 	public Coupang() {
 		this.consoleInput = new Scanner(System.in);
 		
+		// Generic
 		this.coupangUsers = new User[3];
-		this.coupangUsers[0] = new User("user01", "user01password", "사용자1");
-		this.coupangUsers[1] = new WowUser("user02", "user02password", "사용자2", 
-									LocalDate.parse("2025-07-01"), 
-									LocalDate.parse("2025-08-31"));
-		this.coupangUsers[2] = new WowUser("user03", "user03password", "사용자3", 
-									LocalDate.parse("2025-07-01"), 
-									LocalDate.parse("2025-08-31"));
+		ArrayUtil.add(this.coupangUsers, 0, new User("user01", "user01password", "사용자1"));
+		ArrayUtil.add(this.coupangUsers, 1, new WowUser("user02", "user02password", "사용자2", 
+				LocalDate.parse("2025-07-01"), 
+				LocalDate.parse("2025-08-31")));
+		ArrayUtil.add(this.coupangUsers, 2, new WowUser("user03", "user03password", "사용자3", 
+				LocalDate.parse("2025-07-01"), 
+				LocalDate.parse("2025-08-31")));
+		
+
 		// 내 생각 : Item, WowItem, DawnItem 배열을 각각 만드는 것이 아니라, Item 배열에 종류별 상속 클래스 인스턴스를 넣어줌 => 다형성?
 		// User에 User, WowUser를 넣음 -> 생성자 사용 -> 자식(WowUser)에 없으면 부모 거(User) 사용
 		// 인스턴스의 타입과 실제로 들어가는 값이 다를 수 있다. (어떤 값이 들어가는지는 디버깅해서 봐야 앎)
 		this.coupangItems = new Item[10];
-		this.coupangItems[0] = new Item(1, "Item1", 10_000, 3000);
-		this.coupangItems[1] = new Item(2, "Item2", 20_000, 3000);
-		this.coupangItems[2] = new Item(3, "Item3", 30_000, 3000);
-		this.coupangItems[3] = new WowItem(4, "Item4", 40_000, 3000, "S", 0, true); // Item이 WowItem의 멤버변수에 값을 채워주는 역할 (new WowItem)
-		this.coupangItems[4] = new WowItem(5, "Item5", 50_000, 3000, "C", 3.5, true);
-		this.coupangItems[5] = new WowItem(6, "Item10", 50_000, 3000, "C", 3.5, true);
-		this.coupangItems[6] = new DawnItem(7, "Item6", 50_000, 3000, "C", 3.5, true, true); // this는 DawnItem
-		this.coupangItems[7] = new DawnItem(8, "Item7", 50_000, 3000, "C", 3.5, true, true);
-		this.coupangItems[8] = new DawnItem(9, "Item8", 50_000, 3000, "C", 3.5, true, true);
-		this.coupangItems[9] = new DawnItem(10, "Item9", 50_000, 3000, "C", 3.5, true, true);
+		
+		ArrayUtil.add(this.coupangItems , 0, new Item(1, "Item1", 10_000, 3000));
+		ArrayUtil.add(this.coupangItems , 1, new Item(2, "Item2", 20_000, 3000));
+		ArrayUtil.add(this.coupangItems , 2, new Item(3, "Item3", 30_000, 3000));
+		ArrayUtil.add(this.coupangItems , 3, new WowItem(4, "Item4", 40_000, 3000, "S", 0, true));
+		ArrayUtil.add(this.coupangItems , 4, new WowItem(5, "Item5", 50_000, 3000, "C", 3.5, true));
+		ArrayUtil.add(this.coupangItems , 5, new WowItem(6, "Item10", 50_000, 3000, "C", 3.5, true));
+		ArrayUtil.add(this.coupangItems , 6, new DawnItem(7, "Item6", 50_000, 3000, "C", 3.5, true, true));
+		ArrayUtil.add(this.coupangItems , 7, new DawnItem(8, "Item7", 50_000, 3000, "C", 3.5, true, true));
+		ArrayUtil.add(this.coupangItems , 8, new DawnItem(9, "Item8", 50_000, 3000, "C", 3.5, true, true));
+		ArrayUtil.add(this.coupangItems , 9, new DawnItem(10, "Item9", 50_000, 3000, "C", 3.5, true, true));
+//		this.coupangItems[0] = new Item(1, "Item1", 10_000, 3000);
+//		this.coupangItems[1] = new Item(2, "Item2", 20_000, 3000);
+//		this.coupangItems[2] = new Item(3, "Item3", 30_000, 3000);
+//		this.coupangItems[3] = new WowItem(4, "Item4", 40_000, 3000, "S", 0, true); // Item이 WowItem의 멤버변수에 값을 채워주는 역할 (new WowItem)
+//		this.coupangItems[4] = new WowItem(5, "Item5", 50_000, 3000, "C", 3.5, true);
+//		this.coupangItems[5] = new WowItem(6, "Item10", 50_000, 3000, "C", 3.5, true);
+//		this.coupangItems[6] = new DawnItem(7, "Item6", 50_000, 3000, "C", 3.5, true, true); // this는 DawnItem
+//		this.coupangItems[7] = new DawnItem(8, "Item7", 50_000, 3000, "C", 3.5, true, true);
+//		this.coupangItems[8] = new DawnItem(9, "Item8", 50_000, 3000, "C", 3.5, true, true);
+//		this.coupangItems[9] = new DawnItem(10, "Item9", 50_000, 3000, "C", 3.5, true, true);
 	}
 	
 	private int printAndSelectMenu() {
