@@ -1,5 +1,8 @@
 package com.ktdsuniversity.edu.contact.vo;
 
+import com.ktdsuniversity.edu.contact.util.InputUtil;
+import com.ktdsuniversity.edu.contact.util.MenuUtil;
+
 public class EmailVO {
 
 	/**
@@ -38,6 +41,33 @@ public class EmailVO {
 	public String toString() {
 		return "EmailVO [emailType=" + emailType + ", email=" + email + "]";
 	}
+
+	public static EmailVO createNewInstance() {
+		int menu = 0;
+		while(true) {
+			menu = MenuUtil.printAndSelectEmailMenu();
+			if(MenuUtil.isValidEmailMenu(menu)) {
+				break;
+			}
+		}
+		
+		EmailVO emailVO = new EmailVO();
+		emailVO.setEmailType(menu);
+		
+		String email = InputUtil.next("이메일을 입력하세요.", true);
+		emailVO.setEmail(email);
+		
+		return emailVO;
+		
+	}
+
+	public boolean match(String searchKeyword) {
+		if ( ( this.email != null && this.email.contains(searchKeyword)) ) {
+			return true;
+		}
+		return false;
+	}
+	
 	
 	
 }

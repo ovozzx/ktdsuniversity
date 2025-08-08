@@ -2,6 +2,10 @@ package com.ktdsuniversity.edu.contact.vo;
 
 import java.time.LocalDate;
 
+import com.ktdsuniversity.edu.contact.util.InputUtil;
+import com.ktdsuniversity.edu.contact.util.MenuUtil;
+
+
 /**
  * 연락처의 중요한 날
  */
@@ -44,7 +48,30 @@ public class SpecialDateVO {
 	public String toString() {
 		return "SpecialDateVO [specialDateType=" + this.specialDateType + ", specialDate=" + this.specialDate + "]";
 	}
-	
+
+	public boolean match(String searchKeyword) {
+		if ( ( this.specialDate != null && this.specialDate.toString().contains(searchKeyword)) ) {
+			return true;
+		}
+		return false;
+	}
+
+	public static SpecialDateVO createNewInstance() {
+		int menu = 0;
+		while (true) {
+			menu = MenuUtil.printAndSelectSpecialMenu();
+			if ( MenuUtil.isValidSpecialMenu(menu) ) {
+				break;
+			}
+		}
+		
+		SpecialDateVO specialDateVO = new SpecialDateVO();
+		specialDateVO.setSpecialDateType(menu);
+		
+		String specialDate = InputUtil.next("중요한 날을 입력하세요.", true);
+		specialDateVO.setSpecialDate(LocalDate.parse(specialDate));
+		return specialDateVO;
+	}
 	
 	
 }

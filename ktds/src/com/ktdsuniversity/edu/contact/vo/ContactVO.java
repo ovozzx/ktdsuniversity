@@ -1,12 +1,18 @@
 package com.ktdsuniversity.edu.contact.vo;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
+
+import com.ktdsuniversity.edu.contact.database.FileHandler;
 
 /**
  * 연락처 정보
  */
 public class ContactVO {
+	
+	private String id; // 연락처 하나를 구분지을 고유한 값
+	private FileHandler database; 
 	
 	private File profilePicture;
 	private NameVO name; // has a (클래스 안에 클래스)
@@ -17,15 +23,19 @@ public class ContactVO {
 	private String group;
 	private CompanyVO company;
 	private List<AddressVO> addressList;
-	private List<SpecialDateVO> specialdateList;
+	private List<SpecialDateVO> specialDateList;
 	private List<RelationshipVO> relationshipList;
 	private String memo;
 	private List<String> websiteList;
 	private String bellSoundName;
 	
+	public ContactVO() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public ContactVO(File profilePicture, NameVO name, SpeachNameVO speachName, String nickname,
 			List<PhoneVO> phoneList, List<EmailVO> emailList, String group, CompanyVO company,
-			List<AddressVO> addressList, List<SpecialDateVO> specialdateList, List<RelationshipVO> relationshipList,
+			List<AddressVO> addressList, List<SpecialDateVO> specialDateList, List<RelationshipVO> relationshipList,
 			String memo, List<String> websiteList, String bellSoundName) {
 		super();
 		this.profilePicture = profilePicture;
@@ -37,13 +47,21 @@ public class ContactVO {
 		this.group = group;
 		this.company = company;
 		this.addressList = addressList;
-		this.specialdateList = specialdateList;
+		this.specialDateList = specialDateList;
 		this.relationshipList = relationshipList;
 		this.memo = memo;
 		this.websiteList = websiteList;
 		this.bellSoundName = bellSoundName;
 	}
 
+	public String getId() {
+		return this.id;
+	}
+	
+	public void setId(String id) {
+		this.id = id;
+	}
+	
 	public File getProfilePicture() {
 		return profilePicture;
 	}
@@ -116,12 +134,12 @@ public class ContactVO {
 		this.addressList = addressList;
 	}
 
-	public List<SpecialDateVO> getSpecialdateList() {
-		return specialdateList;
+	public List<SpecialDateVO> getSpecialDateList() {
+		return specialDateList;
 	}
 
-	public void setSpecialdateList(List<SpecialDateVO> specialdateList) {
-		this.specialdateList = specialdateList;
+	public void setSpecialDateList(List<SpecialDateVO> specialDateList) {
+		this.specialDateList = specialDateList;
 	}
 
 	public List<RelationshipVO> getRelationshipList() {
@@ -156,15 +174,32 @@ public class ContactVO {
 		this.bellSoundName = bellSoundName;
 	}
 
+	public void save() {
+		this.database = new FileHandler("C:\\Users\\User\\Desktop\\contact", 
+				"contact_%s.db".formatted(this.id));
+		
+		List<String> contactString = new ArrayList<>();
+		contactString.add("%s```%s```%s```%s```%s"
+				.formatted(this.name.get호칭(), this.name.getLastName(), 
+						this.name.getMiddleName(), this.name.getFirstName(), 
+						this.name.get경칭()));
+
+		database.writeFile(contactString);
+		
+		this.name.save();
+		
+		
+	}
 	
 	@Override
 	public String toString() {
 		return "ContactVO [profilePicture=" + this.profilePicture + ", name=" + this.name + ", speachName=" + this.speachName
 				+ ", nickname=" + this.nickname + ", phoneList=" + this.phoneList + ", emailList=" + this.emailList + ", group="
 				+ this.group + ", company=" + this.company + ", addressList=" + this.addressList + ", specialdateList="
-				+ this.specialdateList + ", relationshipList=" + this.relationshipList + ", memo=" + this.memo + ", websiteList="
+				+ this.specialDateList + ", relationshipList=" + this.relationshipList + ", memo=" + this.memo + ", websiteList="
 				+ this.websiteList + ", bellSoundName=" + this.bellSoundName + "]";
 	}
+
 	
 	
 

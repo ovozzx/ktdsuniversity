@@ -11,6 +11,7 @@ public interface PhoneType {
 	int HOME = 3;
 	int COMPANY_FAX = 4;
 	int HOME_FAX = 5;
+	int BEAPER = 6;
 	int ETC = 99;
 
 	

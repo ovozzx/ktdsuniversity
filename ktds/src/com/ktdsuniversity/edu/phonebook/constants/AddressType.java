@@ -4,6 +4,7 @@ public interface AddressType {
 
 	int HOME = 1;
 	int COMPANY = 2;
+	int SCHOOL = 3;
 	int ETC = 99;
 	
 }

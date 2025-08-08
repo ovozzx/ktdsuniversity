@@ -7,10 +7,15 @@ public interface PhoneType {
 	
 
 	int CELL_PHONE = 1;
-	int COMPANY = 2;
-	int HOME = 3;
-	int COMPANY_FAX = 4;
-	int HOME_FAX = 5;
+	int HOME = 2;
+	int COMPANY = 3;
+	int SCHOOL = 4;
+	int IPHONE = 5;
+	int APPLE_WATCH = 6;
+	int REPERENTIVE = 7;
+	int HOME_FAX = 8;
+	int COMPANY_FAX = 9;
+	int BEAPER = 10;
 	int ETC = 99;
 
 	

@@ -8,11 +8,10 @@ import java.util.List;
  */
 public class ContactVO {
 	
-	// VO + 외 데이터 
 	private File profilePicture;
-	private NameVO name; // has a (클래스 안에 클래스) => 호칭, ... 
+	private NameVO name; // has a (클래스 안에 클래스)
 	private SpeachNameVO speachName; // 빈파일
-	private String nickname;
+	private PronounVO nickname;
 	private List<PhoneVO> phoneList;
 	private List<EmailVO> emailList;
 	private String group;
@@ -24,7 +23,11 @@ public class ContactVO {
 	private List<String> websiteList;
 	private String bellSoundName;
 	
-	public ContactVO(File profilePicture, NameVO name, SpeachNameVO speachName, String nickname,
+	public ContactVO() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public ContactVO(File profilePicture, NameVO name, SpeachNameVO speachName, PronounVO nickname,
 			List<PhoneVO> phoneList, List<EmailVO> emailList, String group, CompanyVO company,
 			List<AddressVO> addressList, List<SpecialDateVO> specialdateList, List<RelationshipVO> relationshipList,
 			String memo, List<String> websiteList, String bellSoundName) {
@@ -69,11 +72,11 @@ public class ContactVO {
 		this.speachName = speachName;
 	}
 
-	public String getNickname() {
+	public PronounVO getNickname() {
 		return nickname;
 	}
 
-	public void setNickname(String nickname) {
+	public void setNickname(PronounVO nickname) {
 		this.nickname = nickname;
 	}
 

@@ -1,5 +1,8 @@
 package com.ktdsuniversity.edu.phonebook.vo;
 
+import com.ktdsuniversity.edu.contact.util.InputUtil;
+import com.ktdsuniversity.edu.contact.util.StringUtil;
+
 /**
  * 연락처의 이름
  */
@@ -14,14 +17,6 @@ public class NameVO {
 	public NameVO() {} // 외부 솔루션과의 연동
 	// nothing...
 	
-	/**
-	 * 
-	 * @param 호칭
-	 * @param lastName
-	 * @param middleName
-	 * @param firstName
-	 * @param 경칭
-	 */
 	public NameVO(String 호칭, String lastName, String middleName, String firstName, String 경칭) {
 		super();
 		this.호칭 = 호칭;
@@ -71,6 +66,24 @@ public class NameVO {
 		this.경칭 = 경칭;
 	}
 
+	
+	public static NameVO createNewInstance() {
+		NameVO newInstance = new NameVO();
+		String 호칭 = InputUtil.next("호칭을 입력하세요. > ");
+		if(! StringUtil.isEmpty(호칭)) {
+			newInstance.set호칭(호칭);
+		}
+		String firstName = InputUtil.next("성을 입력하세요. > ");
+		if(! StringUtil.isEmpty(firstName)) {
+			newInstance.setFirstName(firstName);
+		}
+		String middleName = InputUtil.next("중간이름을 입력하세요. > ");
+		if(! StringUtil.isEmpty(middleName)) {
+			newInstance.setMiddleName(middleName);
+		}
+		return newInstance;
+	}
+	
 	@Override
 	public String toString() {
 		return "NameVO [호칭=" + 호칭 + ", lastName=" + this.lastName + ", middleName=" + this.middleName + ", firstName=" + this.firstName

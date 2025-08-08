@@ -1,5 +1,8 @@
 package com.ktdsuniversity.edu.phonebook.vo;
 
+import com.ktdsuniversity.edu.contact.util.InputUtil;
+import com.ktdsuniversity.edu.contact.util.MenuUtil;
+
 /**
  * 연락처
  */
@@ -42,6 +45,25 @@ public class PhoneVO {
 	@Override
 	public String toString() {
 		return "PhoneVO [phoneNumberType=" + this.phoneNumberType + ", phoneNumber=" + this.phoneNumber + "]";
+	}
+
+	public static PhoneVO createNewInstance() {
+		
+		int menu = 0;
+		while(true) {			
+			menu = MenuUtil.printAndSelectPhoneMenu();
+			if(MenuUtil.isValidPhoneMenu(menu)) {
+				break;
+			}
+		}
+		
+		PhoneVO phoneVO = new PhoneVO();
+		phoneVO.setPhoneNumberType(menu);
+		
+		String phoneNumber = InputUtil.next("연락처를 입력하세요. > ", true);
+		phoneVO.setPhoneNumber(phoneNumber);
+		
+		return phoneVO;
 	}
 	
 	

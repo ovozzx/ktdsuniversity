@@ -1,5 +1,8 @@
 package com.ktdsuniversity.edu.contact.vo;
 
+import com.ktdsuniversity.edu.contact.util.InputUtil;
+import com.ktdsuniversity.edu.contact.util.StringUtil;
+
 /**
  * 연락처의 직장 정보
  */
@@ -46,6 +49,33 @@ public class CompanyVO {
 	@Override
 	public String toString() {
 		return "CompanyVO [position=" + this.position + ", dept=" + this.dept + ", name=" + this.name + "]";
+	}
+
+	public boolean match(String searchKeyword) {
+		if ( ( this.position != null && this.position.contains(searchKeyword)) ||
+				( this.dept != null && this.dept.contains(searchKeyword)) || 
+				( this.name != null && this.name.contains(searchKeyword)) ) {
+			return true;
+		}
+		return false;
+	}
+
+	public static CompanyVO createNewInstance() {
+		CompanyVO companyVO = new CompanyVO();
+		String position = InputUtil.next("직급을 입력하세요. > ");
+		if ( !StringUtil.isEmpty(position) ) {
+			companyVO.setPosition(position);
+		}
+		String dept = InputUtil.next("부서를 입력하세요. > ");
+		if ( !StringUtil.isEmpty(dept) ) {
+			companyVO.setDept(dept);
+		}
+		String name = InputUtil.next("회사명을 입력하세요. > ");
+		if ( !StringUtil.isEmpty(name) ) {
+			companyVO.setName(name);
+		}
+		
+		return companyVO;
 	}
 	
 	
