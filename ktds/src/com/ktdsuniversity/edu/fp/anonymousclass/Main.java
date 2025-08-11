@@ -9,11 +9,17 @@ public class Main {
 	public static void main(String[] args) {
 		
 		Calculator calculator = new Calculator(10, 20);
-		Computable addComputer = new AddComputer();
+		// Computable은 인터페이스 : public int calc(int numberOne, int numberTwo)
+		Computable addComputer = new AddComputer(); // AddComputer 클래스 : Computable 오버라이딩 구현
 		int result = calculator.calc(addComputer);
+		// 과정 : 
+		// addComputer.calc(10, 20) 호출 (선언만 있고 구현이 없음)
+		// 실제 객체(인스턴스)(AddComputer)의 calc()를 실행. ( 호출 시점에 참조 변수가 아니라 실제 객체 타입 기준으로 실행 메서드가 결정 = 동적 바인딩)
+		// == AddComputer.calc(10, 20)가 실행 → 10 + 20 = 30
 		System.out.println(result);
 		
 		//Computable subComputer = new Computable(); // 인터페이스라서 인스턴스(객체)화 할 수 없음
+		// 익며 클래스는 이름 없는 구현 클래스를 new로 바로 정의
 		Computable subComputer = new Computable() { 
 			// 익명클래스를 이용하면 인스턴스도 클래스 만들 수 있음 (오버라이딩 필요)
 			@Override
@@ -47,6 +53,7 @@ public class Main {
 		System.out.println(mulResult);
 		
 		Computable subFunction = (int numberOne, int numeberTwo) -> numberOne + numeberTwo; // 함수를 변수에 할당
+		// 람다식은 반드시 함수형 인터페이스(추상 메서드 1개) 타입에 대입됩니다.
 		// 람다란? (= 함수)
 		// => 익명 클래스 단순화
 		// => 객체는 아님, 함수임
