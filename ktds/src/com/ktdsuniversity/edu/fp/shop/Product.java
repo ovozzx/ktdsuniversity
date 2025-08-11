@@ -1,4 +1,4 @@
-package com.ktdsuniversity.edu.collections.list.shop;
+package com.ktdsuniversity.edu.fp.shop;
 
 import java.util.Objects;
 
@@ -38,10 +38,6 @@ public class Product {
 		this.stock = stock;
 	}
 
-	public boolean isLowPrice() { // 파리미터가 없음. 
-		// static 필요없음
-		return this.price < 100000;
-	}
 
 	@Override
 	public String toString() {
