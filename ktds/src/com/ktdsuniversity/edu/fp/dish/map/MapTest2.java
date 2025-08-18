@@ -69,7 +69,9 @@ public class MapTest2 {
 				.filter((str) -> str.trim().length() >= 7)
 				.map((str) -> "%s(%d)".formatted(str.trim(), str.trim().length()))
 				.forEach(System.out::println);
-				; // 검증
+				; 
+				
+				// 검증
 				
 				System.out.println("=".repeat(50));
 				// 다익스트라 리스트에서 띄어쓰기와 한글로만 이루어진 라인이 몇개인가?

@@ -57,7 +57,7 @@ public class Cafe {
 			cartoon.setIsRental(true);			
 		}
 		else {
-			
+			System.out.println("해당 책을 대여할 수 없습니다.");
 		}
 		
 	}
@@ -69,7 +69,7 @@ public class Cafe {
 			cartoon.setIsRental(false);			
 		}
 		else {
-			
+			System.out.println("해당 책을 반납할 수 없습니다.");			
 		}
 		
 	}

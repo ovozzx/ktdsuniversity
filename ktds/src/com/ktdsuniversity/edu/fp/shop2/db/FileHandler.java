@@ -27,6 +27,7 @@ public class FileHandler {
 							.stream() // Stream<String>
 							.map((line) -> line.split("```")) // Stream<String[]>
 							.map((array) -> createProduct.convert(array)) // Stream<Product>
+							// convert → ComputerSeller() 내 람다식 실행 → new Product(...) 실행.
 							.collect(Collectors.toList()); // List<Product> : 수정가능한 List 반환
 							//.toList(); // List<Product> : 읽기전용 List 반환
 		}
@@ -41,6 +42,7 @@ public class FileHandler {
 		
 		List<String> lines = products.stream() // Stream<Product>
 									.map((product) -> convert.apply(product)) // Stream<String>
+									// 내 생각 : 이것도 람다식 구현
 									.toList(); // List<String>
 		
 		FileWriteUtil.writeLines(

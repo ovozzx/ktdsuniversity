@@ -16,7 +16,7 @@ public class ComputerSeller implements Seller {
 	
 	public ComputerSeller() {
 		this.database = new FileHandler("/Users/codemakers/Desktop/shop", "shop.db");
-		this.computer = this.database.readFile(
+		this.computer = this.database.readFile( // CreateProduct의 convert를 실제로 구현해서 넘겨주는 코드
 				(arr) -> new Product(
 								arr[0], 
 								Integer.parseInt(arr[1]), 

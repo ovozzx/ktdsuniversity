@@ -32,7 +32,7 @@ public class Main {
 		pm.print(customer);
 		
 		GenericPrintMessage gpm = new GenericPrintMessage();
-		gpm.print("ㅇㅁㅇ"); // 무엇                                                                                                                                             이든 들어갈 수 있음 (T 대신 들어갈 것), object로 결정됨
+		gpm.print("ㅇㅁㅇ"); // 무엇이든 들어갈 수 있음 (T 대신 들어갈 것), object로 결정됨
 		
 		GenericPrintMessage<Integer> gpm2 = new GenericPrintMessage<Integer>(); // T가 Integer로 바뀜 (자바 몇 이후부터 생성자에 있는 뭐 숨길 수 있음)
 		gpm2.print(4934); // 이것만 Integer로 바뀌어있음
