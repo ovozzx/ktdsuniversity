@@ -9,7 +9,6 @@ public class GenericsPrinter<R, E> {
 		// String -> R 변환은 R이 String이라고 보장할 수 없기 때문에 
 		// -> 업캐스팅이 될 수도 있고 안 될 수도 있음 => 자동 변환 불가능 (명시 필요)
 	}
-	
-
 
 }
+
