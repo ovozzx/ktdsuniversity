@@ -12,7 +12,7 @@ public class Problem2884 {
 		int min = Integer.parseInt(str[1]);
 		
 		if((min - 45) > 0) {
-			
+			min = min - 45;
 		}
 		else if((min - 45) == 0) {
 			min = 0;
