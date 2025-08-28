@@ -7,7 +7,7 @@ public class Problem10811 {
 	
 	public static void main(String[] args) {
 		
-	    Scanner consoleInput = new Scanner(System.in);
+		Scanner consoleInput = new Scanner(System.in);
 		
 		String[] str = consoleInput.nextLine().split(" ");
 		
@@ -24,13 +24,11 @@ public class Problem10811 {
 			String[] change = consoleInput.nextLine().split(" ");
 			int startNum = Integer.parseInt(change[0]);
 			int endNum = Integer.parseInt(change[1]);
-//			int temp = arr[startNum - 1];
-//			arr[startNum - 1] = arr[endNum - 1];
-//			arr[endNum - 1] = temp;
+				
 			int[] temp = new int[endNum - startNum + 1];
 			temp = (Arrays.copyOfRange(arr, startNum - 1, endNum)); // 끝 인덱스는 제외 
-			
-			int k = endNum;
+
+			int k = temp.length;
 			for(int j = startNum ; j <= endNum ; j++) {
 				arr[j - 1] = temp[k - 1];
 				k -= 1;
@@ -43,6 +41,7 @@ public class Problem10811 {
 			System.out.print(" ");
 		}
 		
-	}
+	
+}
 
 }
