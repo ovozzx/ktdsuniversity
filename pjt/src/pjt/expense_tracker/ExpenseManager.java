@@ -1,9 +1,11 @@
 package pjt.expense_tracker;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ExpenseManager {
 	
@@ -29,7 +31,7 @@ public class ExpenseManager {
 		DBConnection dbc = new DBConnection();
 		Connection conn = dbc.getConnection();
 		
-		// 3. 쿼리 실행 요청
+		// (3) 쿼리 실행 요청
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, id);
@@ -43,10 +45,57 @@ public class ExpenseManager {
 		
 		} catch(SQLException se) {
 			se.printStackTrace();
+			System.out.println("쿼리가 잘못되었습니다.");
 		}
 		
-
+		try {			
+			conn.close();
+		} catch(SQLException se) {
+			
+		}
+		
+	}
 	
+	// 2. 전체 조회
+	public void printExpense() {
+		
+		List<String> queryResult = new ArrayList<>();
+		String query = "SELECT * FROM EXPENSE";
+		
+		DBConnection dbc = new DBConnection();
+		Connection conn = dbc.getConnection();
+		// (3) 쿼리 실행 요청
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(query);
+			ResultSet rs = pstmt.executeQuery(); // 쿼리 조회 결과 
+			while(rs.next()) {
+				queryResult.add(String.format("ID : %s'|DATETIME : %s'|AMOUNT : %s'|TYPE : %s'|CATEGORY : %s'|MEMO : %s'| ",
+						rs.getString("ID"),
+						rs.getDate("DATETIME"),
+						rs.getInt("AMOUNT"),
+						rs.getString("TYPE"),
+						rs.getString("CATEGORY"),
+						rs.getString("MEMO")));
+			}
+			
+		} catch(SQLException se){
+			se.printStackTrace();
+			System.out.println("쿼리가 잘못되었습니다.");
+		}
+		
+		System.out.println("가계부 조회" + "=".repeat(100));
+		for(String result : queryResult) { // 전체 출력
+			System.out.println(result);
+		}
+		
+		
+		try {			
+			conn.close();
+		} catch(SQLException se) {
+			
+		}
+		
+		
 		
 	}
 

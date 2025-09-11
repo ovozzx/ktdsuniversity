@@ -11,7 +11,7 @@ public class DBConnection {
 		
 		Connection conn = null;
 		
-		// 1. OracleDriver.class 파일 로드
+		// (1) OracleDriver.class 파일 로드
 		try {		
 			Class.forName("oracle.jdbc.OracleDriver"); 
 		} catch(ClassNotFoundException cfe) {
@@ -19,7 +19,7 @@ public class DBConnection {
 			return null;
 		}
 		
-		// 2. Oracle 연결
+		// (2) Oracle 연결
 		try {
 			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "system", "1234");
 		} catch(SQLException se) {

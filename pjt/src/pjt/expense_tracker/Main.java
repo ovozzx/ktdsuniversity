@@ -9,7 +9,9 @@ public class Main {
 		
 //		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-		manager.addExpense(1, "2025-09-09", 1000, "expense", "cafe", "");
+		//manager.addExpense(2, "2025-09-11", 4000, "expense", "meal", "");
+		manager.printExpense();
+		
 	}
 	
 }
