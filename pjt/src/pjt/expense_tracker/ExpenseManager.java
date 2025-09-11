@@ -10,7 +10,7 @@ import java.util.List;
 public class ExpenseManager {
 	
 	
-	// 1. 가계부 항목 추가 함수 
+	// 1. 가계부 항목 추가 기능 함수 
 	/**
 	 * 
 	 * @param id
@@ -56,7 +56,7 @@ public class ExpenseManager {
 		
 	}
 	
-	// 2. 전체 조회
+	// 2. 전체 조회 기능 함수
 	public void printExpense() {
 		
 		List<String> queryResult = new ArrayList<>();
